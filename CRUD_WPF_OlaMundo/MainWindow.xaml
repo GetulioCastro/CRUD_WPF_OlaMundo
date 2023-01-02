@@ -1,0 +1,56 @@
+﻿<Window x:Class="CRUD_WPF_OlaMundo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUD_WPF_OlaMundo"
+        mc:Ignorable="d"
+        Title="Meu 1o CRUD WPF Application" Height="520" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="frm_crud" RenderTransformOrigin="0.499,0.51" Background="#FFFFE6BA" Cursor="Arrow" Height="510" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="lbl_cabecalho" Content="1o CRUD em WPF Application C#" HorizontalAlignment="Left" Margin="253,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.342,0.387" FontWeight="Bold" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="31" Width="259"/>
+        <Label x:Name="lbl_email" Content="E-mail*:" HorizontalAlignment="Left" Margin="65,19,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="2" Height="26" Width="54"/>
+        <Label x:Name="lbl_idade" Content="Idade*:" HorizontalAlignment="Left" Margin="70,143,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.RowSpan="3" Height="26" Width="50"/>
+        <Label x:Name="lbl_sobrenome" Content="Sobrenome*:" HorizontalAlignment="Left" Margin="37,103,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="84"/>
+        <Label x:Name="lbl_nome" Content="Nome*:" HorizontalAlignment="Left" Margin="67,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,2.505" FontWeight="Bold" Height="26" Width="53"/>
+        <TextBox x:Name="txb_nome" HorizontalAlignment="Left" Margin="130,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" ToolTip="Digite seu primeiro nome" Height="18"/>
+        <TextBox x:Name="txb_sobrenome" HorizontalAlignment="Left" Margin="129,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.317,0.225" ToolTip="Digite seu sobrenome" Height="18"/>
+        <TextBox x:Name="txb_idade" HorizontalAlignment="Left" Margin="133,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.317,0.225" ToolTip="Digite sua idade, somente número inteiro" Grid.RowSpan="3" Height="18"/>
+        <TextBox x:Name="txb_email" HorizontalAlignment="Left" Margin="130,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.317,0.225" ToolTip="Digite seu melhor e-mail" Grid.Row="2" Height="18"/>
+        <DataGrid x:Name="dgvDisplay" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="304,60,22,247" Background="#FFD8CBCB" IsEnabled="True" ToolTip="Display do Banco de Dados" Grid.RowSpan="3" SelectionChanged="dgvDisplay_SelectionChanged"/>
+        <Button x:Name="btn_Inserir" HorizontalAlignment="Left" Margin="36,123,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="80" Width="100" Click="btn_Inserir_Click" Grid.Row="2" RenderTransformOrigin="-0.278,0.467">
+            <StackPanel x:Name="stp_img_ins" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Cursor="Pen" Orientation="Horizontal">
+                <Image Source="/gravar.jpg" Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock x:Name="tbl_Inserir" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="37">Inserir</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btn_Alterar" HorizontalAlignment="Left" Margin="143,123,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="80" Width="100" Grid.Row="2" Click="btn_Alterar_Click">
+            <StackPanel x:Name="stp_img_upd" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Cursor="Pen" Orientation="Horizontal" >
+                <Image Source="/alterar.jpg" Width="30" Height="30" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
+                <TextBlock x:Name="tbl_Alterar" Margin="2" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center">Alterar</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btn_Deletar" HorizontalAlignment="Left" Margin="250,123,0,0" VerticalAlignment="Top" Height="80" Width="100" FontWeight="Bold" Grid.Row="2" Click="btn_Deletar_Click">
+            <StackPanel x:Name="stp_img_del" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Cursor="Wait" Orientation="Horizontal" >
+                <Image Source="/deletar.jpg" Width="30" Height="30" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
+                <TextBlock x:Name="tbl_Deletar" Margin="2" Width="41" HorizontalAlignment="Center" VerticalAlignment="Center">Apagar</TextBlock>
+            </StackPanel>
+        </Button>
+        <Label x:Name="lbl_ID" Content="ID:" Margin="364,136,360,0" VerticalAlignment="Top" Background="#FFEA9044" FontWeight="Bold" Grid.Row="2" HorizontalContentAlignment="Center" Height="26"/>
+        <TextBox x:Name="txb_ID" Margin="364,170,358,0" VerticalAlignment="Top" Height="26" HorizontalContentAlignment="Center" ToolTip="Digite o ID do GRID para pesquisa" Grid.Row="2" RenderTransformOrigin="-0.224,0.463" VerticalContentAlignment="Center"/>
+        <Button x:Name="btn_limpar" HorizontalAlignment="Left" Margin="450,127,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="77" Width="145" Click="btn_limpar_Click" Grid.Row="2" RenderTransformOrigin="-0.975,1.35">
+            <StackPanel x:Name="stp_img_lcp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" Cursor="AppStarting" Orientation="Horizontal" >
+                <Image Source="/fechar.jpg" Width="30" Height="32" VerticalAlignment="Center"  HorizontalAlignment="Left"/>
+                <TextBlock x:Name="tbl_Limpar" Margin="2" Width="90" HorizontalAlignment="Center" VerticalAlignment="Center">Limpar Campos</TextBlock>
+            </StackPanel>
+        </Button>
+        <Label x:Name="lbl_info" Content="Campos contendo ' * ' são obrigatórios." HorizontalAlignment="Left" Margin="76,50,0,0" VerticalAlignment="Top" Grid.Row="2" Height="26" Width="219"/>
+        <CheckBox Content="CRUD" FontWeight="Bold" FontSize="22" IsChecked="True" HorizontalAlignment="Left" Margin="640,145,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="85" RenderTransformOrigin="0.447,-0.089"/>
+
+    </Grid>
+
+</Window>
