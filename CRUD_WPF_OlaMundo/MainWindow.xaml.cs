@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,7 +21,7 @@ namespace CRUD_WPF_OlaMundo
     // /<summary>
     // /Interaction logic for MainWindow.xaml
     // /</summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
@@ -30,6 +31,15 @@ namespace CRUD_WPF_OlaMundo
 
             carregaGrid();
 
+        }
+        private void LaunchGitHubSite(object sender, RoutedEventArgs e)
+        {
+            // Launch the GitHub site...
+        }
+
+        private void DeployCupCakes(object sender, RoutedEventArgs e)
+        {
+            // deploy some CupCakes...
         }
 
         SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-K8FS7AT;Initial Catalog=CRUD_WPF;User ID=sa;Password=Sql@ge1971;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -46,7 +56,7 @@ namespace CRUD_WPF_OlaMundo
         public void carregaGrid()
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("select ID, nome as Nome, idade as Idade, email as Email from tabelaCrud", con);
+            SqlCommand cmd = new SqlCommand("select ID, nome as Nome, sobrenome as Sobrenome, idade as Idade, email as Email from tabelaCrud", con);
             DataTable dt = new DataTable();
             SqlDataReader sdr = cmd.ExecuteReader();
             dt.Load(sdr);
